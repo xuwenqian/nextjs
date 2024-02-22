@@ -5,7 +5,9 @@ import dynamic from 'next/dynamic'
 
 import styles from "./page.module.css";
 //动态导入，禁用ssr，否则报错ReferenceError: self is not defined
-const CustomCkEditor = dynamic(() => import('@/components/cmack').then((mod) => mod.CustomCkEditor), { ssr: false })
+//const CustomCkEditor = dynamic(() => import('@/components/cmack').then((mod) => mod.CustomCkEditor), { ssr: false })
+const QuillEditor = dynamic(() => import('@/components/QuillEditor').then((mod) => mod.QuillEditor), { ssr: false })
+
                         
 export default function Home() {
   const [content, setContent] = useState("<h1>测试</h1><p> asadasd</p><p> </p><p> </p><h2>test111</h2>");
@@ -14,6 +16,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.ckeditor}>
         <CustomCkEditor data={content} onChange={(data: string)=>setContent(data)}/>
+        <QuillEditor></QuillEditor>
       </div>
     
     </main>
